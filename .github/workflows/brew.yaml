@@ -28,17 +28,17 @@ jobs:
     needs: update-brew
     steps:
     - run: |
-        brew tap iter8-tools/iter8
+        brew tap "iter8-tools"/iter8
         brew install iter8
         brew test --verbose --debug iter8
         brew uninstall iter8
-        brew untap iter8-tools/iter8
+        brew untap "iter8-tools"/iter8
     - run: |
-        brew tap iter8-tools/iter8
+        brew tap "iter8-tools"/iter8
         export VERSION=${{ github.event.client_payload.ref }}
         export SEMVER=${VERSION//v}
         export MAJORMINOR=${SEMVER%.*}
-        brew install iter8@${MAJORMINOR}
-        brew test --verbose --debug iter8@${MAJORMINOR}
-        brew uninstall iter8@${MAJORMINOR}
-        brew untap iter8-tools/iter8
+        brew install "iter8@"${MAJORMINOR}
+        brew test --verbose --debug "iter8@"${MAJORMINOR}
+        brew uninstall "iter8@"${MAJORMINOR}
+        brew untap "iter8-tools"/iter8
