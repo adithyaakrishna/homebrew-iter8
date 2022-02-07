@@ -18,7 +18,7 @@ jobs:
         export SEMVER=${VERSION//v}
         export MAJORMINOR=${SEMVER%.*}
         export SUFFIX=AT${MAJORMINOR//.}
-        envsubst < iter8.rb.tpl > iter8@${MAJORMINOR}.rb
+        envsubst < iter8.rb.tpl > "iter8@${MAJORMINOR}".rb
     - uses: stefanzweifel/git-auto-commit-action@v4
       with:
         commit_message: Apply changes to brew formula
